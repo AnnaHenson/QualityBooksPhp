@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\category;
 
 class BookController extends Controller
 {
@@ -15,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = \App\Book::all();
+        $books = \App\Book::paginate(3);
         return view('books/book')->with('books', $books);
     }
 
@@ -39,10 +40,6 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('BookImage');
-        $real_name = $file->getClientOriginalName();
-        $destination_path = public_path('images\books');
-        $file->move($destination_path, $real_name);
 
         $book = new \App\Book([
             'title' => $request->get('Title'),
@@ -51,8 +48,13 @@ class BookController extends Controller
             'category_id' => $request->get('CategoryId'),
             'supplier_id' => $request->get('SupplierId')
         ]);
+
+        if ($request->hasFile('BookImage')) {
+            $path = $request->file('BookImage')->store('books');
+            $book->setAttribute('file_name', $path);
+        }
+
         $book->save();
-        $books = \App\Book::all();
         return redirect('/books');
     }
 

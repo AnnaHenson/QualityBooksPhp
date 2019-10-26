@@ -24,6 +24,7 @@
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
                                 <div class="card-body">
+                                    <img src="{{ Storage::url($book->file_name)}}"/>
                                     <p class="card-text lead">{{$book->title}}</p>
                                     <p class="card-text lead">{{$book->description}}</p>
                                     <small class="text-muted">{{$book->price}}</small>
@@ -33,6 +34,7 @@
                     @endforeach
                 </div>
             </div>
+            {{$books->links()}}
         </div>
     </div>
 
