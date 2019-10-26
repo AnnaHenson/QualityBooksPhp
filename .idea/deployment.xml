@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="dochyper">
+    <serverData>
+      <paths name="dochyper">
+        <serverdata>
+          <mappings>
+            <mapping deploy="assigment2" local="$PROJECT_DIR$" web="/assignment2" />
+            <mapping local="" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
