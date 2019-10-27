@@ -25,6 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{asset('images/logo.png')}}" width="50px"/>
                     {{ config('app.name', 'Quality Books') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -37,6 +38,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{Route('books')}}">Books</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/about.html')}}">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/contact.html')}}">Contact</a>
+                        </li>
+                        @auth
+                            @if(Auth::user()->is_admin)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{Route('suppliers')}}">Suppliers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{Route('categories')}}">Categories</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{Route('orders')}}">Orders</a>
+                                </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

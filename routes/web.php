@@ -32,3 +32,6 @@ Route::get('/suppliers', 'SupplierController@index')->name('suppliers');
 Route::get('/suppliers/create', 'SupplierController@create')->name('create-supplier');
 Route::post('/supplier/create', 'SupplierController@store')->name('save-supplier');
 
+Route::get('/orders', 'OrderController@index')->name('orders');
+Route::get('/order/status/{id}', 'OrderController@set_status')->name('set_status');
+
