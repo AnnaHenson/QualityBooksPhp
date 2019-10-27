@@ -14,7 +14,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $supplier = \App\supplier::all();
+        return view('suppliers/index')->with('suppliers', $supplier);
     }
 
     /**
@@ -24,7 +25,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('suppliers/create');
     }
 
     /**
@@ -35,7 +36,16 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $supplier = new \App\supplier([
+            'email' => $request->get('Email'),
+            'home_number' => $request->get('HomeNumber'),
+            'supplier_name' => $request->get('SupplierName'),
+            'work_number' => $request->get('WorkNumber'),
+            'mobile_number' => $request->get('MobileNumber'),
+        ]);
+
+        $supplier ->save();
+        return redirect('/suppliers');
     }
 
     /**
