@@ -39,10 +39,10 @@
                             <a class="nav-link" href="{{Route('books')}}">Books</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/about.html')}}">About us</a>
+                            <a class="nav-link" href="{{Route('about_us')}}">About us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/contact.html')}}">Contact</a>
+                            <a class="nav-link" href="{{Route('contact')}}">Contact</a>
                         </li>
                         @auth
                             @if(Auth::user()->is_admin)
