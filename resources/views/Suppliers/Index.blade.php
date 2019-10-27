@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container body-content">
+
 
 
         <h2>Index</h2>
@@ -55,5 +55,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+
 @endsection

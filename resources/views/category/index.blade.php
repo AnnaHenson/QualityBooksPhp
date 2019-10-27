@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container body-content">
-
 
         <h2>Index</h2>
 
@@ -30,8 +28,5 @@
         <hr />
         <div>
         </div>
-        <footer>
-            <p>&copy; 2019 - QualityBooks</p>
-        </footer>
-    </div>
+
 @endsection

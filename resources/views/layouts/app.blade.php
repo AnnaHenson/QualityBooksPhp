@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -33,7 +34,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{Route('books')}}">Books</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -71,13 +74,18 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container body-content">
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>
+            <p>&copy; 2019 - QualityBooks</p>
+        </footer>
+        </div>
     </div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>

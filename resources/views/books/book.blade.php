@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+
 <div style=""></div>
 <h2>Books</h2>
 
@@ -36,6 +36,6 @@
             </div>
             {{$books->links()}}
         </div>
-    </div>
+
 
 @endsection

@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/books', 'BookController@index')->name('books');
 Route::get('/create-book', 'BookController@create')->name('create-book');
 Route::post('/create-book-post', 'BookController@store')->name('create-book-post');
+Route::get('cart', 'BookController@cart');
+Route::get('add-to-cart/{id}', 'BooksController@addToCart');
 
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/create', 'CategoryController@create')->name('create-category');

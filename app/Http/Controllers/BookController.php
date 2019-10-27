@@ -14,7 +14,7 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $books = \App\Book::paginate(3);
         return view('books/book')->with('books', $books);
@@ -101,5 +101,62 @@ class BookController extends Controller
     public function destroy(book $book)
     {
         //
+    }
+
+    public function cart()
+    {
+        return view('cart/cart');
+    }
+    public function addToCart($id)
+    {
+        $book = book::find($id);
+
+        if(!$book) {
+
+            abort(404);
+
+        }
+
+        $cart = session()->get('cart');
+
+        // if cart is empty then this the first product
+        if(!$cart) {
+
+            $cart = [
+                $id => [
+                    "name" => $book->name,
+                    "quantity" => 1,
+                    "price" => $book->price,
+                    "photo" => $book->file_name
+                ]
+            ];
+
+            session()->put('cart', $cart);
+
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
+        }
+
+        // if cart not empty then check if this product exist then increment quantity
+        if(isset($cart[$id])) {
+
+            $cart[$id]['quantity']++;
+
+            session()->put('cart', $cart);
+
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
+
+        }
+
+        // if item not exist in cart then add to cart with quantity = 1
+        $cart[$id] = [
+            "name" => $book->name,
+            "quantity" => 1,
+            "price" => $book->price,
+            "photo" => $book->file_name
+        ];
+
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 }

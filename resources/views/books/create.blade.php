@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
     <h2>Create</h2>
 
     <h4>Book</h4>
@@ -61,5 +60,5 @@
     <div>
         <a href="{{route('books')}}">Back to List</a>
     </div>
-    </div>
+    
 @endsection
