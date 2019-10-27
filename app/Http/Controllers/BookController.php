@@ -16,8 +16,16 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $books = \App\Book::paginate(3);
-        return view('books/book')->with('books', $books);
+        $search = $request->get('searchString');
+        if (isset($search))
+        {
+            $books = \App\Book::where('title', 'LIKE', '%'.$search.'%')->paginate(3);
+            return view('books/book')->with('books', $books);
+        }
+        else {
+            $books = \App\Book::paginate(3);
+            return view('books/book')->with('books', $books);
+        }
     }
 
     /**

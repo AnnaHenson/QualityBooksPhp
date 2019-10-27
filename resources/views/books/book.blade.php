@@ -7,12 +7,12 @@
 <h2>Books</h2>
 
 <a href="{{route('create-book')}}">Add Book</a>
-<form asp-action="Index" method="get">
+<form action="{{Route('books')}}" method="get">
     <div class="form-actions no-color">
         <p>
             Find by name or price <input type="text" name="searchString"  value=""/>
             <input type="submit" value="Search" class="btn btn-default"/>
-            <a>Back to full list</a>
+            <a href="{{Route('books')}}">Back to full list</a>
         </p>
     </div>
 </form>
