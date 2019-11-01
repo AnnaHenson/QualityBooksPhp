@@ -10,7 +10,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="/public/images/book1.jpg" alt="Books" class="img-responsive" />
+                <img src="{{asset('images/book1.jpg')}}" alt="Books" class="img-responsive" />
 
             </div>
            <!-- <div class="item">
