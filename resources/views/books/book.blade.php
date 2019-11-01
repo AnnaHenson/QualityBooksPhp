@@ -28,6 +28,7 @@
                                     <p class="card-text lead">{{$book->title}}</p>
                                     <p class="card-text lead">{{$book->description}}</p>
                                     <small class="text-muted">{{$book->price}}</small>
+                                    <a href="{{Route('add_to_cart', ['id' => $book->id])}}">Add to cart</a>
                                 </div>
                             </div>
                         </div>

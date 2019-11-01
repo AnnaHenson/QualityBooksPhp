@@ -21,8 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/books', 'BookController@index')->name('books');
 Route::get('/create-book', 'BookController@create')->name('create-book');
 Route::post('/create-book-post', 'BookController@store')->name('create-book-post');
-Route::get('cart', 'BookController@cart');
-Route::get('add-to-cart/{id}', 'BooksController@addToCart');
 
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/create', 'CategoryController@create')->name('create-category');
@@ -38,3 +36,7 @@ Route::get('/order/status/{id}', 'OrderController@set_status')->name('set_status
 Route::get('/aboutus', 'AboutUs@index')->name('about_us');
 Route::get('/contact', 'Contact@index')->name('contact');
 
+Route::patch('update-cart', 'CartController@update');
+Route::delete('remove-from-cart', 'CartController@remove');
+Route::get('/cart', 'CartController@cart')->name('view_cart');
+Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('add_to_cart');
