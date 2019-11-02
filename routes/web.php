@@ -32,6 +32,8 @@ Route::post('/supplier/create', 'SupplierController@store')->name('save-supplier
 
 Route::get('/orders', 'OrderController@index')->name('orders');
 Route::get('/order/status/{id}', 'OrderController@set_status')->name('set_status');
+Route::get('/orders/place', 'OrderController@create')->name('create_order');
+Route::post('/orders/place', 'OrderController@store')->name('store_order');
 
 Route::get('/aboutus', 'AboutUs@index')->name('about_us');
 Route::get('/contact', 'Contact@index')->name('contact');

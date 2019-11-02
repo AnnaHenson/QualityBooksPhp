@@ -9,11 +9,11 @@ class CartController extends Controller
 {
     public function update(Request $request)
     {
-        if($request->id and $request->quantity)
+        if($request->get('id') and $request->get('quantity'))
         {
             $cart = session()->get('cart');
 
-            $cart[$request->id]["quantity"] = $request->quantity;
+            $cart[$request->get('id')]["quantity"] = $request->get('quantity');
 
             session()->put('cart', $cart);
 
@@ -27,9 +27,9 @@ class CartController extends Controller
 
             $cart = session()->get('cart');
 
-            if(isset($cart[$request->id])) {
+            if(isset($cart[$request->get('id')])) {
 
-                unset($cart[$request->id]);
+                unset($cart[$request->get('id')]);
 
                 session()->put('cart', $cart);
             }

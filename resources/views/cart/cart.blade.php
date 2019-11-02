@@ -16,6 +16,10 @@
 
         <?php $total = 0 ?>
 
+        @if(Session::has('success'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
+        @endif
+
         @if(session('cart'))
             @foreach(session('cart') as $id => $details)
 
@@ -52,9 +56,12 @@
             <td class="text-center"><strong>GST {{ $total * 0.15}}</strong></td>
         </tr>
         <tr>
-            <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+            <td><a href="{{ Route('books') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total ${{ $total + ($total * 0.15)}}</strong></td>
+        </tr>
+        <tr>
+            <td><a href="{{ Route('create_order') }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> Create order</a></td>
         </tr>
         </tfoot>
     </table>
