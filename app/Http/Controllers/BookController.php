@@ -58,8 +58,9 @@ class BookController extends Controller
         ]);
 
         if ($request->hasFile('BookImage')) {
-            $path = $request->file('BookImage')->store('books');
-            $book->setAttribute('file_name', $path);
+            $file = $request->file('BookImage');
+            $path = $file->move(public_path().'/books', $file->getClientOriginalName());
+            $book->setAttribute('file_name', '/books/'.$file->getClientOriginalName());
         }
 
         $book->save();
