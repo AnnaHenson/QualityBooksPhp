@@ -64,45 +64,32 @@
 
     <hr />
     <div>
+        @if(session('cart'))
 
-        <h2><span class="glyphicon glyphicon glyphicon-shopping-cart"></span></h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <h4 class="display-4">Book</h4>
-                </div>
-                <div class="col-sm-2">
-                    <h4 class="display-4">Quantity</h4>
-                </div>
-                <div class="col-sm-2">
-                    <h4 class="display-4">Price</h4>
-                </div>
-            </div>
+                <h2><span class="glyphicon glyphicon glyphicon-shopping-cart"></span></h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <h4>Book</h4>
+                        </div>
+                        <div class="col-sm-2">
+                            <h4>Quantity</h4>
+                        </div>
+                        <div class="col-sm-2">
+                            <h4>Price</h4>
+                        </div>
+                    </div>
+                 @foreach(session('cart') as $id => $details)
+                    <div class="row">
+                        <div class="col-sm-2">{{$details['name']}}</div>
+                        <div class="col-sm-2">{{$details['quantity']}} <span class="glyphicon glyphicon-remove-circle"></span></div>
+                        <div class="col-sm-2">{{$details['price']}}</div>
+                    </div>
+                @endforeach
+            @endif
+                    <br />
 
-            <div class="row">
-                <div class="col-sm-2"><a href="/Orders/Details/1">Color Therapy</a></div>
-                <div class="col-sm-2">1 <a href="/ShoppingCart/RemoveFromCart/1"><span class="glyphicon glyphicon-remove-circle"></span></a></div>
-                <div class="col-sm-2">$1.00</div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2"><a href="/Orders/Details/2">Art that changed the world</a></div>
-                <div class="col-sm-2">1 <a href="/ShoppingCart/RemoveFromCart/2"><span class="glyphicon glyphicon-remove-circle"></span></a></div>
-                <div class="col-sm-2">$20.00</div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2">GrandTotal:</div>
 
-                <div class="col-sm-2">$21.00</div>
-            </div>
-            <div class="row">
-                <div class="col-sm-offset-4">
-                    <a class="btn btn-primary" href="{{Route('store_order')}}">
-                        Proceed to checkout <span class="glyphicon glyphicon-step-forward"></span>
-                    </a>
-                </div>
-
-            </div>
             <div class="row">
                 <div class="col-sm-offset-4">
                     <a class="btn btn-danger" href="{{Route('books')}}">

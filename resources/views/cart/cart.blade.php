@@ -20,8 +20,8 @@
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
         @endif
 
-        @if(session('cart'))
-            @foreach(session('cart') as $id => $details)
+    @if(session('cart'))
+        @foreach(session('cart') as $id => $details)
 
                 <?php $total += $details['price'] * $details['quantity'] ?>
 
