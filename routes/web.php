@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = \App\category::withCount('books')->get();
+    return view('welcome')->with('categories', $categories);
 });
 
 Auth::routes(['verify' => true]);
@@ -32,7 +33,7 @@ Route::post('/supplier/create', 'SupplierController@store')->name('save-supplier
 
 Route::get('/orders', 'OrderController@index')->name('orders');
 Route::get('/order/status/{id}', 'OrderController@set_status')->name('set_status');
-Route::get('/orders/place', 'OrderController@create')->name('create_order');
+Route::get('/orders/place', 'OrderController@create')->name('create_order')->middleware('auth');
 Route::post('/orders/place', 'OrderController@store')->name('store_order');
 
 Route::get('/aboutus', 'AboutUs@index')->name('about_us');
@@ -42,3 +43,5 @@ Route::patch('update-cart', 'CartController@update');
 Route::delete('remove-from-cart', 'CartController@remove');
 Route::get('/cart', 'CartController@cart')->name('view_cart');
 Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('add_to_cart');
+
+Route::post('/update-profile', 'HomeController@store')->name('update-profile');

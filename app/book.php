@@ -11,11 +11,11 @@ class book extends Model
     //
     function supplier()
     {
-        $this->belongsTo('supplier');
+        $this->belongsTo('App\supplier');
     }
 
     function category()
     {
-        $this->belongsTo('category');
+        $this->belongsTo('App\category');
     }
 }

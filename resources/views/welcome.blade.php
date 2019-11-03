@@ -48,18 +48,12 @@
         <div class="col-md-4">
             <h2>Overview of Book Categories</h2>
             <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="/Books/IndexByCategory?categoryId=1">Maori Culture</a>
-                    <span class="badge badge-primary badge-pill">0</span>
+                @foreach($categories as $category)
+                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="/Books/IndexByCategory?categoryId={{$category->id}}">{{$category->name}}</a>
+                    <span class="badge badge-primary badge-pill">{{$category->books_count}}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="/Books/IndexByCategory?categoryId=2">Sports</a>
-                    <span class="badge badge-primary badge-pill">0</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="/Books/IndexByCategory?categoryId=4">Business</a>
-                    <span class="badge badge-primary badge-pill">0</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="/Books/IndexByCategory?categoryId=5">Arts</a>
-                    <span class="badge badge-primary badge-pill">0</span>
-                </li>
+                @endforeach
+
             </ul>
         </div>
 
