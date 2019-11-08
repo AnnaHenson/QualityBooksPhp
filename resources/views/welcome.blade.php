@@ -49,7 +49,7 @@
             <h2>Overview of Book Categories</h2>
             <ul class="list-group">
                 @foreach($categories as $category)
-                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="/Books/IndexByCategory?categoryId={{$category->id}}">{{$category->name}}</a>
+                <li class="list-group-item d-flex justify-content-between align-items-center"><a , , href="{{Route('books', ['categoryId' =>$category->id])}}">{{$category->name}}</a>
                     <span class="badge badge-primary badge-pill">{{$category->books_count}}</span>
                 </li>
                 @endforeach

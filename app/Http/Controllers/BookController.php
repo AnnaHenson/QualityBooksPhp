@@ -17,15 +17,27 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('searchString');
-        if (isset($search))
+        $catId = $request->get('categoryId');
+
+        if (isset($catId))
         {
-            $books = \App\Book::where('title', 'LIKE', '%'.$search.'%')->paginate(3);
+            $books =\App\Book::query('category_id', $catId)->paginate(3);
+            return view('books/book')->with('books', $books);
+        }
+
+        if (is_numeric($search))
+        {
+            $books = \App\Book::where('price', $search)->paginate(3);
             return view('books/book')->with('books', $books);
         }
         else {
-            $books = \App\Book::paginate(3);
+            $books = \App\Book::where('title', 'LIKE', '%' . $search . '%')->paginate(3);
             return view('books/book')->with('books', $books);
         }
+
+        $books = \App\Book::paginate(3);
+        return view('books/book')->with('books', $books);
+
     }
 
     /**

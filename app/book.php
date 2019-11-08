@@ -16,6 +16,6 @@ class book extends Model
 
     function category()
     {
-        $this->belongsTo('App\category');
+        $this->belongsTo(category::class);
     }
 }
