@@ -19,7 +19,7 @@
     <div class="form-actions no-color">
         <p>
             Find by name or price <input type="text" name="searchString"  value=""/>
-            <input type="submit" value="Search" class="btn btn-default"/>
+            <input type="submit" value="Search" class="btn btn-info"/>
             <a href="{{Route('books')}}">Back to full list</a>
         </p>
     </div>
@@ -45,7 +45,13 @@
                     @endforeach
                 </div>
             </div>
-            {{$books->links()}}
+            @if (isset($search))
+                {{$books->appends(['searchString' => $search])->links()}}
+            @elseif (isset($categoryId))
+                {{$books->appends(['categoryId' => $categoryId])->links()}}
+            @else
+                {{$books->links()}}
+            @endif
             <div>
                 <a href="{{Route('view_cart')}}">Go to cart</a>
             </div>
