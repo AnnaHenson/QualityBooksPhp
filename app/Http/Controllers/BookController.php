@@ -6,6 +6,7 @@ use App\book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\category;
+use Illuminate\Support\Facades\Log;
 
 class BookController extends Controller
 {
@@ -17,12 +18,18 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('searchString');
+        Log::info('searchString = '.$search);
 
         $catId = $request->get('categoryId');
+        Log::info('categoryId = '.$catId);
 
         if (isset($catId))
         {
-            $books =\App\Book::query('category_id', $catId)->paginate(3);
+            Log::Info('Searching by cat id');
+            $temp = \App\Book::where('category_id', '=', $catId);
+
+            Log::info($temp->toSql());
+            $books = $temp->paginate(3);
             return view('books/book')->with('books', $books)->with('categoryId', $catId);
         }
 

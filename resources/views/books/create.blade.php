@@ -35,7 +35,11 @@
                     <select class="form-control" data-val="true" data-val-required="The CategoryId field is required." id="CategoryId" name="CategoryId">
                         <option value=""> -- Select Category -- </option>
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}" selected="{{($category->id == 1 ? "selected":"")}}">{{$category->name}}</option>
+                            @if($category->id == 1)
+                                <option value="{{$category->id}}" selected="selected">{{$category->name}}</option>
+                            @else
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endif
                         @endforeach
                     </select>
                     <span class="text-danger field-validation-valid" data-valmsg-for="Category" data-valmsg-replace="true"></span>
@@ -60,5 +64,5 @@
     <div>
         <a href="{{route('books')}}">Back to List</a>
     </div>
-    
+
 @endsection
