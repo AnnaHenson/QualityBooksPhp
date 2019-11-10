@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->timestamps();
             $table->decimal('price');
             $table->string('title');
-            $table->string('description')->nullable(true);
+            $table->text('description')->nullable(true);
             $table->string('file_name')->nullable(true);
             $table->unsignedBigInteger("category_id");
             $table->unsignedBigInteger('supplier_id');

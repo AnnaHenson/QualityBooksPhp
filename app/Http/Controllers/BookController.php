@@ -72,7 +72,7 @@ class BookController extends Controller
 
         if ($request->hasFile('BookImage')) {
             $file = $request->file('BookImage');
-            $path = $file->move(public_path().'/books', $file->getClientOriginalName());
+            $file->move(public_path() . '/books', $file->getClientOriginalName());
             $book->setAttribute('file_name', '/books/'.$file->getClientOriginalName());
         }
 
